@@ -3,6 +3,7 @@ class CreateQuizzes < ActiveRecord::Migration[6.0]
     create_table :quizzes do |t|
       t.string :questions
       t.integer :score
+      t.belongs_to :user
 
       t.timestamps
     end
