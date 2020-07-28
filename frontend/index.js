@@ -29,19 +29,41 @@ function createUserform() {
     usersForm.innerHTML +=
         `
         <form>
-        Enter You Name: <input type="text id="username">
+        Enter You Name: <input type="text" id="username">
         <input type="submit" value="Add Name">
         </form>
 
         `
-        stopSubmit()
+        usersForm.addEventListener("submit", userSubmittion)
 }
 
-function stopSubmit() {
-    let usersForm = document.getElementById("users-form")
-    usersForm.addEventListener("submit", () =>{
-        debugger
-    })
-}
+function userSubmittion() {
+// grab values from user form
+        let username = document.getElementById("username").value
+        let usertotal = 0
+        console.log(username)
+
+        let user = {
+            username: username,
+            total: 0
+        }
+
+        fetch(`${BASE_URL}/users`, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(user => {
+            let u = new User(user.id, user.username, user.total)
+            u.renderUser();
+        })
+        
+
+    }
+
 
     // delete users
