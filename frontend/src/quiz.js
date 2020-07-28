@@ -1,5 +1,6 @@
 class Quiz {
-    constructor(questions, score)
+    constructor(questions, score){
     this.questions = questions;
     this.score = score;
+    }
 }
