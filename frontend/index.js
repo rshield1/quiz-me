@@ -67,3 +67,17 @@ function userSubmittion() {
 
 
     // delete users
+
+
+    // let buttons = document.getElementsByClassName("delete-user")
+    
+    // for (let button of buttons){
+    //     button.addEventListener("click", () => {
+    //         debugger;
+    //     })
+    // }
+
+    function deleteUser() {
+        let userId = ParseInt(event.target.dataset.id)
+        debugger
+    }

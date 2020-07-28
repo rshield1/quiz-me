@@ -16,6 +16,9 @@ class User {
         <h3>Username: ${this.username}</h3>
         <li> Total Points: - ${this.total} </li>
         </ul>
+        <button class="delete-user" data-id=${this.id} onclick="deleteUser()">Delete User</button>
         `
     }
 }
+
+
