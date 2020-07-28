@@ -9,7 +9,7 @@ class User {
 
     renderUser(){
         let usersDiv = document.getElementById("users-info")
-
+        
         usersDiv.innerHTML +=
         `
         <ul>

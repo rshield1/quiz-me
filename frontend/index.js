@@ -16,7 +16,6 @@ const BASE_URL = "http://localhost:3000/"
                     let u = new User(user.id, user.username, user.total)
                     u.renderUser();
                 }
-
             })
         }
 
