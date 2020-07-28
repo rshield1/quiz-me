@@ -6,7 +6,7 @@ class User {
     }
 
 
-
+// render and build users
     renderUser(){
         let usersDiv = document.getElementById("users-info")
         

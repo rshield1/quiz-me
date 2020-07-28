@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () =>{
+    createUserform()
     grabUsers()
+    
 
 
 })
@@ -20,7 +22,26 @@ const BASE_URL = "http://localhost:3000/"
         }
 
     
-    // create users
+    // create users and stop the default submit behavior with event listener
+function createUserform() {
+    let usersForm = document.getElementById("users-form")
 
+    usersForm.innerHTML +=
+        `
+        <form>
+        Enter You Name: <input type="text id="username">
+        <input type="submit" value="Add Name">
+        </form>
+
+        `
+        stopSubmit()
+}
+
+function stopSubmit() {
+    let usersForm = document.getElementById("users-form")
+    usersForm.addEventListener("submit", () =>{
+        debugger
+    })
+}
 
     // delete users
