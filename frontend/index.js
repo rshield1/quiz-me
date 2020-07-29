@@ -1,87 +1,12 @@
 document.addEventListener("DOMContentLoaded", () =>{
     createUserform()
     grabUsers()
-    
-
-
 })
-let currentUser = undefined
+
+
+
 const BASE_URL = "http://localhost:3000/"
-
-    // read users so I will create FETCH request!!!
-
-    function grabUsers() {
-            fetch(`${BASE_URL}/users`)
-            .then(res => res.json())
-            .then(users =>{
-                for (let user of users){
-
-                    let u = new User(user.id, user.username, user.total)
-                    u.renderUser();
-                }
-            })
-        }
-
-    
-    // create users and stop the default submit behavior with event listener
-function createUserform() {
-    let usersForm = document.getElementById("users-form")
-
-    usersForm.innerHTML +=
-        `
-        <form>
-        Enter You Name: <input type="text" id="username">
-        <input type="submit" class="btn" value="Add Name">
-        </form>
-
-        `
-        usersForm.addEventListener("submit", userSubmittion)
-}
-
-function userSubmittion() {
-// grab values from user form
-        let username = document.getElementById("username").value
-        let total = 0
-        console.log(username)
-
-        let user = {
-            username: username,
-            total: total
-        }
-
-        fetch(`${BASE_URL}/users`, {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-        .then(res => res.json())
-        .then(user => {
-            let u = new User(user.id, user.username, user.total)
-
-            currentUser = u
-            debugger;
-            u.renderUser();
-        })
-        
-        
-    }
-
-
-    // delete users
-
-    function deleteUser() {
-        let userID = parseInt(event.target.dataset.id)
-        fetch(`${BASE_URL}/users/${userID}`, {
-            method: 'DELETE'
-        })
-        // reload the window
-        this.location.reload()
-    }
-
-    const BONUS = 10;
+const BONUS = 10;
     const startButton = document.getElementById("start-btn")
     const nextButton = document.getElementById("next-btn")
     const questionsElement = document.getElementById("question-container")
@@ -92,6 +17,10 @@ function userSubmittion() {
         currentQuestionIndex++
         nextQuestion()
     })
+    let usersDiv = document.getElementById("users-info")
+    let currentUser = undefined
+    let usersForm = document.getElementById("users-form")
+    let quizContainer = document.getElementById("quiz-container")
     let score = 0
     let shuffleQuestions , currentQuestionIndex
     const questions = [
@@ -128,11 +57,82 @@ function userSubmittion() {
             
             }
         ]
+    // read users so I will create FETCH request!!!
+
+    function grabUsers() {
+            fetch(`${BASE_URL}/users`)
+            .then(res => res.json())
+            .then(users =>{
+                for (let user of users){
+
+                    let u = new User(user.id, user.username, user.total)
+                    u.renderUser();
+                }
+            })
+        }   
+    // create users and stop the default submit behavior with event listener
+function createUserform() {
+    // let usersForm = document.getElementById("users-form")
+
+    usersForm.innerHTML +=
+        `
+        <form>
+        Enter You Name: <input type="text" id="username">
+        <input type="submit" class="btn" value="Add Name">
+        </form>
+
+        `
+        usersForm.addEventListener("submit", userSubmittion)
+}
+// submit user
+function userSubmittion() {
+// grab values from user form
+        let username = document.getElementById("username").value
+        let usertotal = 0
+        console.log(username)
+        let user = {
+            username: username,
+            total: usertotal
+        }
+
+        fetch(`${BASE_URL}/users`, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(user => {
+            let u = new User(user.id, user.username, user.total)
+            u.renderUser();
+        })
+        
+    // function showHide() {
+    //     currentUser = user
+    //     usersForm.classList.add("hide")
+    //     startButton.classList.remove("hide")
+    //     quizContainer.classList.remove("hide")
+    // }
+    }
+    // delete users
+    function deleteUser() {
+        let userID = parseInt(event.target.dataset.id)
+        fetch(`${BASE_URL}/users/${userID}`, {
+            method: 'DELETE'
+        })
+        // reload the window
+        this.location.reload()
+    }
+
+    
 
     
 
 
     function startGame(){
+        username = 
         console.log('heeeyyy')
         startButton.classList.add('hide')
         shuffleQuestions = questions.sort(() => Math.random() - .5)

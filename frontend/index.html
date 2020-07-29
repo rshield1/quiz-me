@@ -4,19 +4,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz-Me</title>
     <link rel="stylesheet" href="src/style.css">
-
-    
 </head>
+
+
 <body>
     
 
-    <div id="users-form" class="controls">
+    <div id="users-form" class="controls container">
     </div>
 
     <br>
-    
+
 <div id="hud">
-        <div id="hud-item">
+        <div id="hud-item" class="hide">
             <p class="hud-prefix">
                 Question and User
             </p>
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div id="hud">
-        <div id="hud-item">
+        <div id="hud-item" class="hide">
             <p class="hud-prefix">
                 Score
             </p>
@@ -39,7 +39,7 @@
     <br>
 
 
- <div class="container">
+ <div class="container" id="quiz-container">
         <div id="question-container" class="hide">
             <div id="question">Question</div>
                 <div id="answer-buttons" class="btn-grid">

@@ -8,14 +8,13 @@ class User {
 
 // render and build users
     renderUser(){
-        let usersDiv = document.getElementById("users-info")
         
         usersDiv.innerHTML +=
         `
-        <ul>
+        <div id="hud-item">
         <h3>Username: ${this.username}</h3>
-        <li> Total Points: - ${this.total} </li>
-        </ul>
+        <p> Total Points: - ${this.total} </p>
+        </div>
         <button class="delete-user" data-id=${this.id} onclick="deleteUser()">Delete User</button>
         `
     }

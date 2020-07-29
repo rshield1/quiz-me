@@ -97,6 +97,10 @@ body.wrong {
     justify-content: center;
 }
 
+#hud-item {
+    color: white;
+}
+
 .hud-prefix {
     text-align: center;
     font-size: 1.5rem;
@@ -108,5 +112,5 @@ body.wrong {
 
 #users-info {
     text-align: center;
-    font-size: xx-small;
+    font-size: x-small;
 }
