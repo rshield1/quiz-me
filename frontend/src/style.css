@@ -14,7 +14,7 @@ body {
     --hue: var(--hue-neutral);
     padding: 0;
     margin: 0;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -41,6 +41,7 @@ body.wrong {
     box-shadow: 0 0 10px 2px;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
 
 .btn-grid {
@@ -89,4 +90,23 @@ body.wrong {
 
 .hide {
     display: none;
+}
+
+#hud {
+    display: flex;
+    justify-content: center;
+}
+
+.hud-prefix {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.hud-main-text {
+    text-align: center;
+}
+
+#users-info {
+    text-align: center;
+    font-size: xx-small;
 }
