@@ -17,12 +17,14 @@ const BONUS = 10;
         currentQuestionIndex++
         nextQuestion()
     })
+    let hudUser = document.getElementById("hud-user")
     let usersDiv = document.getElementById("users-info")
     let currentUser = undefined
     let usersForm = document.getElementById("users-form")
     let quizContainer = document.getElementById("quiz-container")
-    let score = 0
+    let score = document.getElementById("hud-score")
     let shuffleQuestions , currentQuestionIndex
+    let questionCounter = document.getElementById("question-counter")
     const questions = [
             {
                 question: "How do locate an element by it's in Javascript?",
@@ -142,7 +144,10 @@ function userSubmittion() {
     }
 
     function nextQuestion() {
+        currentUser = "Robert"
+        hudUser.innerText = currentUser
         showQuestion(shuffleQuestions[currentQuestionIndex])
+        questionCounter.innerText = `Question # ${[currentQuestionIndex + 1]}`
     }
 
     function showQuestion(question) {
