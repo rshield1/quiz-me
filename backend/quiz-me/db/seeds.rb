@@ -7,37 +7,45 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Quiz.destroy_all
+Question.destroy_all
 10.times do
     User.create(username: Faker::Games::SuperSmashBros.fighter, total: 0)
 end
 
-# Quiz.create(questions:
-#         {
-#             :question1 => "How do locate an element by it's in Javascript?",
-#             # choice1: 'document.getElementByID',
-#             # choice2: 'document.querySelectorAll',
-#             # choice3: 'document.getElementByClassName',
-#             # choice4: 'cant find it by the id',
-#             :answer1 => 1
-#         },
-#         # {
-#         #     question2
-#         #         "How do you add js to your html page?",
-#         #     choice1: "<script href='xxx.js'>",
-#         #     choice2: "<script name='xxx.js'>",
-#         #     choice3: "<script src='xxx.js'>",
-#         #     choice4: "<script file='xxx.js'>",
-#         #     answer: 3
-#         # },
-#         # {
-#         #     question3 " How do you write 'Hello World' in your console?",
-#         #     choice1: "msgBox('Hello World');",
-#         #     choice2: "console.logBox('Hello World');",
-#         #     choice3: "msg('Hello World');",
-#         #     choice4: "console.log('Hello World');",
-#         #     answer: 4
-#         # }, 
-#         :score => 0
-#     )
+Question.create(questions:[
+    {
+        question: "How do locate an element by it's in Javascript?",
+        answers: [
+            { text: 'getElementByID', correct: true },
+            { text: 'querySelectorAll', correct: false },
+            { text: 'getElementByClassName', correct: false },
+            { text: 'cant find it by the id', correct: false }
+
+        ]
+    },
+    {
+        question: "How do you add js to your html page?",
+        answers: [
+            {text: "<script href='xxx.js'>", correct: false},
+            {text: "<script name='xxx.js'>", correct: false},
+            {text: "<script src='xxx.js'>", correct: true},
+            {text: "<script file='xxx.js'>", correct: false}
+        ]
+        
+    
+    },
+    {
+        question: "How do you write 'Hello World' in your console?",
+        answers: [
+            {text: "msgBox('Hello World');", correct: false},
+            {text: "console.logBox('Hello World');", correct: false},
+            {text: "msg('Hello World');", correct: false},
+            {text: "console.log('Hello World');", correct: true}
+        ]
+        
+    
+    }
+]
+    )
 
 

@@ -101,6 +101,10 @@ body.wrong {
     color: white;
 }
 
+#hud-item-users {
+    color: white;
+}
+
 .hud-prefix {
     text-align: center;
     font-size: 1.5rem;

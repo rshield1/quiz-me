@@ -1,23 +1,16 @@
-document.addEventListener("DOMContentLoaded", () =>{
-    createUserform()
-    grabUsers()
-})
+    document.addEventListener("DOMContentLoaded", () =>{
+        createUserform()
+        grabUsers()
+    })
 
-
-
-const BASE_URL = "http://localhost:3000/"
-const BONUS = 10;
-const MAX_QUESTIONS = 3;
+    const BASE_URL = "http://localhost:3000/"
+    const BONUS = 10;
+    const MAX_QUESTIONS = 3;
     const startButton = document.getElementById("start-btn")
     const nextButton = document.getElementById("next-btn")
     const questionsElement = document.getElementById("question-container")
     const questionElement = document.getElementById("question")
     const answerButtons = document.getElementById("answer-buttons")
-    startButton.addEventListener('click', startGame)
-    nextButton.addEventListener('click', () => {
-        currentQuestionIndex++
-        nextQuestion()
-    })
     let hudUser = document.getElementById("hud-user")
     let usersDiv = document.getElementById("users-info")
     let currentUser = undefined
@@ -74,10 +67,9 @@ const MAX_QUESTIONS = 3;
             })
         }   
     // create users and stop the default submit behavior with event listener
-function createUserform() {
+    function createUserform() {
     // let usersForm = document.getElementById("users-form")
-
-    usersForm.innerHTML +=
+        usersForm.innerHTML +=
         `
         <form>
         Enter You Name: <input type="text" id="username">
@@ -87,8 +79,8 @@ function createUserform() {
         `
         usersForm.addEventListener("submit", userSubmittion)
 }
-// submit user
-function userSubmittion() {
+    // submit user
+    function userSubmittion() {
 // grab values from user form
         let username = document.getElementById("username").value
         let usertotal = 0
@@ -97,7 +89,7 @@ function userSubmittion() {
             username: username,
             total: usertotal
         }
-
+        // fetch post request to create user
         fetch(`${BASE_URL}/users`, {
             method: 'POST',
             headers: {
@@ -130,12 +122,13 @@ function userSubmittion() {
     }
 
     
-
-    
-
-
+    startButton.addEventListener('click', startGame)
+    nextButton.addEventListener('click', () => {
+        currentQuestionIndex++
+        nextQuestion()
+    })
     function startGame(){
-        username = undefined
+        username = document.getElementById("hud-item-users").lastElementChild
         console.log('heeeyyy')
         startButton.classList.add('hide')
         shuffleQuestions = questions.sort(() => Math.random() - .5)
@@ -207,7 +200,7 @@ function userSubmittion() {
         element.classList.remove('wrong')
     }
 
-   incrementScore = num =>{
+   incrementScore = (num) =>{
        score += num;
        score.innerText = score
    }

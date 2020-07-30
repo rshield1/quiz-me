@@ -5,17 +5,16 @@ class User {
     this.total = total;
     }
 
-
 // render and build users
     renderUser(){
         
         usersDiv.innerHTML +=
         `
-        <div id="hud-item">
-        <h3>Username: ${this.username}</h3>
+        <div id="hud-item-users" "data-id"=${this.id}>
+        <h3> ${this.id} - Username: ${this.username}</h3>
         <p> Total Points: - ${this.total} </p>
         </div>
-        <button class="delete-user" data-id=${this.id} onclick="deleteUser()">Delete User</button>
+        <button class="delete-user" "data-id"=${this.id} onclick="deleteUser()">Delete User</button>
         `
     }
 }
