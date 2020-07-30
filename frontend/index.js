@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 const BASE_URL = "http://localhost:3000/"
 const BONUS = 10;
+const MAX_QUESTIONS = 3;
     const startButton = document.getElementById("start-btn")
     const nextButton = document.getElementById("next-btn")
     const questionsElement = document.getElementById("question-container")
@@ -134,7 +135,7 @@ function userSubmittion() {
 
 
     function startGame(){
-        username = 
+        username = undefined
         console.log('heeeyyy')
         startButton.classList.add('hide')
         shuffleQuestions = questions.sort(() => Math.random() - .5)
@@ -144,10 +145,10 @@ function userSubmittion() {
     }
 
     function nextQuestion() {
-        currentUser = "Robert"
+        currentUser = undefined
         hudUser.innerText = currentUser
         showQuestion(shuffleQuestions[currentQuestionIndex])
-        questionCounter.innerText = `Question # ${[currentQuestionIndex + 1]}`
+        questionCounter.innerText = `Question ${[currentQuestionIndex + 1]}/${MAX_QUESTIONS}`
     }
 
     function showQuestion(question) {
@@ -158,7 +159,7 @@ function userSubmittion() {
             button.innerText = answer.text
             button.classList.add('btn')
 
-            if (answer.correct) {
+            if (answer.correct == true) {
                 button.dataset.correct = answer.correct
             }
             button.addEventListener('click', selectAnswer)
@@ -206,4 +207,8 @@ function userSubmittion() {
         element.classList.remove('wrong')
     }
 
+   incrementScore = num =>{
+       score += num;
+       score.innerText = score
+   }
     
