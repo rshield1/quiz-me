@@ -1,7 +1,6 @@
     document.addEventListener("DOMContentLoaded", () =>{
         createUserform()
         grabUsers()
-        grabQuestions()
     })
 
     const BASE_URL = "http://localhost:3000/"
@@ -12,49 +11,48 @@
     const questionsElement = document.getElementById("question-container")
     const questionElement = document.getElementById("question")
     const answerButtons = document.getElementById("answer-buttons")
+    let currentUser = undefined
     let hudUser = document.getElementById("hud-user")
     let usersDiv = document.getElementById("users-info")
-    let currentUser = undefined
     let usersForm = document.getElementById("users-form")
     let quizContainer = document.getElementById("quiz-container")
     let score = document.getElementById("hud-score")
     let shuffleQuestions , currentQuestionIndex
     let questionCounter = document.getElementById("question-counter")
-    let questions = grabQuestions()
-    // const questions = [
-    //         {
-    //             question: "How do locate an element by it's in Javascript?",
-    //             answers: [
-    //                 { text: 'getElementByID', correct: true },
-    //                 { text: 'querySelectorAll', correct: false },
-    //                 { text: 'getElementByClassName', correct: false },
-    //                 { text: 'cant find it by the id', correct: false }
+    const questions = [
+            {
+                question: "How do locate an element by it's in Javascript?",
+                answers: [
+                    { text: 'getElementByID', correct: true },
+                    { text: 'querySelectorAll', correct: false },
+                    { text: 'getElementByClassName', correct: false },
+                    { text: 'cant find it by the id', correct: false }
 
-    //             ]
-    //         },
-    //         {
-    //             question: "How do you add js to your html page?",
-    //             answers: [
-    //                 {text: "<script href='xxx.js'>", correct: false},
-    //                 {text: "<script name='xxx.js'>", correct: false},
-    //                 {text: "<script src='xxx.js'>", correct: true},
-    //                 {text: "<script file='xxx.js'>", correct: false}
-    //             ]
+                ]
+            },
+            {
+                question: "How do you add js to your html page?",
+                answers: [
+                    {text: "<script href='xxx.js'>", correct: false},
+                    {text: "<script name='xxx.js'>", correct: false},
+                    {text: "<script src='xxx.js'>", correct: true},
+                    {text: "<script file='xxx.js'>", correct: false}
+                ]
                 
             
-    //         },
-    //         {
-    //             question: "How do you write 'Hello World' in your console?",
-    //             answers: [
-    //                 {text: "msgBox('Hello World');", correct: false},
-    //                 {text: "console.logBox('Hello World');", correct: false},
-    //                 {text: "msg('Hello World');", correct: false},
-    //                 {text: "console.log('Hello World');", correct: true}
-    //             ]
+            },
+            {
+                question: "How do you write 'Hello World' in your console?",
+                answers: [
+                    {text: "msgBox('Hello World');", correct: false},
+                    {text: "console.logBox('Hello World');", correct: false},
+                    {text: "msg('Hello World');", correct: false},
+                    {text: "console.log('Hello World');", correct: true}
+                ]
                 
             
-    //         }
-    //     ]
+            }
+        ]
     // read users so I will create FETCH request!!!
 
     function grabUsers() {
@@ -81,7 +79,7 @@
     // let usersForm = document.getElementById("users-form")
         usersForm.innerHTML +=
         `
-        <form>
+        <form id="user-form">
         Enter You Name: <input type="text" id="username">
         <input type="submit" class="btn" value="Add Name">
         </form>
@@ -92,6 +90,8 @@
     // submit user
     function userSubmittion() {
 // grab values from user form
+    debugger
+        event.preventDefault()
         let username = document.getElementById("username").value
         let usertotal = 0
         console.log(username)
@@ -113,13 +113,7 @@
             let u = new User(user.id, user.username, user.total)
             u.renderUser();
         })
-        
-    // function showHide() {
-    //     currentUser = user
-    //     usersForm.classList.add("hide")
-    //     startButton.classList.remove("hide")
-    //     quizContainer.classList.remove("hide")
-    // }
+            document.getElementById("user-form").reset()
     }
     // delete users
     function deleteUser() {
@@ -127,8 +121,9 @@
         fetch(`${BASE_URL}/users/${userID}`, {
             method: 'DELETE'
         })
-        // reload the window
-        this.location.reload()
+        event.target.previousElementSibling.remove()
+        event.target.remove()
+       
     }
 
     
@@ -138,8 +133,6 @@
         nextQuestion()
     })
     function startGame(){
-        username = document.getElementById("hud-item-users").lastElementChild
-        console.log('heeeyyy')
         startButton.classList.add('hide')
         shuffleQuestions = questions.sort(() => Math.random() - .5)
         currentQuestionIndex = 0
@@ -148,7 +141,7 @@
     }
 
     function nextQuestion() {
-        currentUser = undefined
+        // currentUser = undefined
         hudUser.innerText = currentUser
         showQuestion(shuffleQuestions[currentQuestionIndex])
         questionCounter.innerText = `Question ${[currentQuestionIndex + 1]}/${MAX_QUESTIONS}`
