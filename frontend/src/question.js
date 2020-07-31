@@ -1,6 +1,11 @@
 class Question {
-    constructor(questions){
-    this.questions = questions;
+    constructor(content){
+    this.content = content;
+    }
+
+
+    addQuestion(){
+        questionsList.push(this)
     }
 
 

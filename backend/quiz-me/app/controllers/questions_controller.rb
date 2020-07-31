@@ -4,8 +4,9 @@ class QuestionsController < ApplicationController
   # GET /questions
   def index
     @questions = Question.all
+    
 
-    render json: @questions, only: [:questions]
+    render json: @questions, only: [:content]
   end
 
   # GET /questions/1

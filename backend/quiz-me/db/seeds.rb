@@ -10,7 +10,7 @@ Quiz.destroy_all
 Question.destroy_all
 Answer.destroy_all
 10.times do
-    User.create(username: Faker::Games::SuperSmashBros.fighter, total: 0)
+    User.create(username: Faker::Games::SuperSmashBros.fighter, total: rand(10...100))
 end
 
 quiz1 = Quiz.create(name: "Js Quiz")

@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
   def index
     @answers = Answer.all
 
-    render json: @answers
+    render json: @answers, only: [:text, :correct]
   end
 
   # GET /answers/1

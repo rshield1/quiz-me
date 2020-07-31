@@ -1,6 +1,7 @@
     document.addEventListener("DOMContentLoaded", () =>{
         createUserform()
         grabUsers()
+        grabQuestions()
     })
 
     const BASE_URL = "http://localhost:3000/"
@@ -17,9 +18,10 @@
     let usersForm = document.getElementById("users-form")
     let quizContainer = document.getElementById("quiz-container")
     let score = document.getElementById("hud-score")
+    let questionsList = []
     let shuffleQuestions , currentQuestionIndex
     let questionCounter = document.getElementById("question-counter")
-    const questions = [
+    let questions = [
             {
                 question: "How do locate an element by it's in Javascript?",
                 answers: [
@@ -60,25 +62,26 @@
             .then(res => res.json())
             .then(users =>{
                 for (let user of users){
-
                     let u = new User(user.id, user.username, user.total)
                     u.renderUser();
                 }
             })
         } 
         
-    //     function grabQuestions() {
-    //         fetch(`${BASE_URL}/questions`)
-    //         .then(res => res.json())
-    //         .then(question =>{
-    //             debugger
-    //            let q = new Question(question.questions)
-    //             console.log(question)
-    //             questionsArray = question
-    //             console.log(question[0].questions)
-    //             q.renderQuestions()
-    //         })
-    // }
+        function grabQuestions() {
+            fetch(`${BASE_URL}/questions`)
+            .then(res => res.json())
+            .then(data =>{
+                for (let question of data){
+                    let d = new Question(question.content)
+                    d.addQuestion();
+                }
+            })
+                
+        }
+
+
+
     // create users and stop the default submit behavior with event listener
     function createUserform() {
     // let usersForm = document.getElementById("users-form")
@@ -91,11 +94,10 @@
 
         `
         usersForm.addEventListener("submit", userSubmittion)
-}
+    }
     // submit user
     function userSubmittion() {
 // grab values from user form
-    debugger
         event.preventDefault()
         let username = document.getElementById("username").value
         let usertotal = 0
