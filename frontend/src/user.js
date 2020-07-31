@@ -11,11 +11,12 @@ class User {
         usersDiv.innerHTML +=
         `
         <div id="hud-item-users" "data-id"=${this.id}>
-        <h3> ${this.id} - Username: ${this.username}</h3>
-        <p> Total Points: - ${this.total} </p>
+        <h3 id="user-username">${this.username}</h3>
+        <p id="total-points">${this.total}</p>
         </div>
         <button class="delete-user" data-id=${this.id} onclick="deleteUser()">Delete User</button>
         `
+        hudUser.innerHTML = this.username
     }
 }
 

@@ -67,13 +67,18 @@
             })
         } 
         
-        function grabQuestions() {
-            fetch(`${BASE_URL}/questions`)
-            .then(res => res.json())
-            .then(questions =>{
-                questions = new Question(question.id, question.questions)
-            })
-    }
+    //     function grabQuestions() {
+    //         fetch(`${BASE_URL}/questions`)
+    //         .then(res => res.json())
+    //         .then(question =>{
+    //             debugger
+    //            let q = new Question(question.questions)
+    //             console.log(question)
+    //             questionsArray = question
+    //             console.log(question[0].questions)
+    //             q.renderQuestions()
+    //         })
+    // }
     // create users and stop the default submit behavior with event listener
     function createUserform() {
     // let usersForm = document.getElementById("users-form")
@@ -123,6 +128,7 @@
         })
         event.target.previousElementSibling.remove()
         event.target.remove()
+        hudUser.innerText = "Create A User"
        
     }
 
@@ -141,8 +147,6 @@
     }
 
     function nextQuestion() {
-        // currentUser = undefined
-        hudUser.innerText = currentUser
         showQuestion(shuffleQuestions[currentQuestionIndex])
         questionCounter.innerText = `Question ${[currentQuestionIndex + 1]}/${MAX_QUESTIONS}`
     }
