@@ -2,6 +2,8 @@
         createUserform()
         grabUsers()
         grabQuestions()
+        grabAnswers()
+        
     })
 
     const BASE_URL = "http://localhost:3000/"
@@ -12,14 +14,15 @@
     const questionsElement = document.getElementById("question-container")
     const questionElement = document.getElementById("question")
     const answerButtons = document.getElementById("answer-buttons")
+
     let currentUser = undefined
     let hudUser = document.getElementById("hud-user")
     let usersDiv = document.getElementById("users-info")
     let usersForm = document.getElementById("users-form")
     let quizContainer = document.getElementById("quiz-container")
     let score = document.getElementById("hud-score")
-    let questionsList = []
-    let answersList = []
+    const questionsList = []
+    const answersList = []
     let shuffleQuestions , currentQuestionIndex
     let questionCounter = document.getElementById("question-counter")
     let questions = [
@@ -80,7 +83,7 @@
             })
                 
         }
-        function grabQuestions() {
+        function grabAnswers() {
             fetch(`${BASE_URL}/answers`)
             .then(res => res.json())
             .then(answers =>{
@@ -199,7 +202,10 @@
         if (shuffleQuestions.length > currentQuestionIndex + 1) {
           nextButton.classList.remove('hide')  
         } else {
-            startButton.innerText = 'Restart'
+            startButton.innerText = 'Save Score'
+            //will implement score save into database
+
+            
             startButton.classList.remove('hide')
         }
         
@@ -210,8 +216,10 @@
         clearStatusClass(element)
         if (correct) {
             element.classList.add('correct')
+            score.innerText = BONUS
         } else {
             element.classList.add('wrong')
+            score.innerText = 0
         }
     }
 
@@ -226,3 +234,12 @@
        score.innerText = score
    }
     
+
+// let questionsAnswers = (questionsList, answersList) => {
+//     questionsList[0]["answers"] = answersList.slice(0,4)
+//     questionsList[1]["answers"] = answersList.slice(4,8)
+//     questionsList[2]["answers"] = answersList.slice(8,12)
+
+//     console.log(questionsList)
+//     questions = questionsList
+// }
