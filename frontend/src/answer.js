@@ -1,9 +1,14 @@
 class Answer {
-    constructor(id, text, correct){
-    this.id = id
+    constructor(text, correct){
     this.text = text;
     this.correct = correct;
     }
 
+
+
+
+    addAnswer(){
+        answersList.push(this)
+    }
 
 }

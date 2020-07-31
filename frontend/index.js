@@ -19,6 +19,7 @@
     let quizContainer = document.getElementById("quiz-container")
     let score = document.getElementById("hud-score")
     let questionsList = []
+    let answersList = []
     let shuffleQuestions , currentQuestionIndex
     let questionCounter = document.getElementById("question-counter")
     let questions = [
@@ -75,6 +76,17 @@
                 for (let question of data){
                     let d = new Question(question.content)
                     d.addQuestion();
+                }
+            })
+                
+        }
+        function grabQuestions() {
+            fetch(`${BASE_URL}/answers`)
+            .then(res => res.json())
+            .then(answers =>{
+                for (let answer of answers){
+                    let a = new Answer(answer.text, answer.correct)
+                    a.addAnswer();
                 }
             })
                 
