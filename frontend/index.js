@@ -19,10 +19,11 @@
         let usersDiv = document.getElementById("users-info")
         let usersForm = document.getElementById("users-form")
         let quizContainer = document.getElementById("quiz-container")
-        let score = document.getElementById("hud-score")
+    
         let shuffleQuestions , currentQuestionIndex
         let questionCounter = document.getElementById("question-counter")
-
+        // let newScore = 0
+        // let score = document.getElementById("hud-score")
     //Fetching Functions for ALL USERS, QUESTIONS, and ANSWERS!
         function grabUsers() {
                 fetch(`${BASE_URL}/users`)
@@ -143,7 +144,7 @@
                 button.innerText = answer.text
                 button.classList.add('btn')
 
-                if (answer.correct == true) {
+                if (answer.correct) {
                     button.dataset.correct = answer.correct
                 }
                 button.addEventListener('click', selectAnswer)
@@ -186,7 +187,6 @@
                 element.classList.add('correct')
             } else {
                 element.classList.add('wrong')
-                score.innerText = 0
             }
         }
 
@@ -199,8 +199,8 @@
 
     //Used to increment score.  Will fix later
         incrementScore = (num) =>{
-            score += num;
-            score.innerText = score
+            newScore += num
+            score.innerText = newScore
         }
 
     //Collect all questions & Answers in an Array
@@ -209,5 +209,6 @@
             questionsList[0]["answers"] = answersList.slice(0,4)
             questionsList[1]["answers"] = answersList.slice(4,8)
             questionsList[2]["answers"] = answersList.slice(8,12)
-            console.log("questionsList", questionsList)
+            console.log("questionsList", ...questionsList)
         }
+

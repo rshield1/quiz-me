@@ -12,7 +12,6 @@ class User {
         `
         <div id="hud-item-users" "data-id"=${this.id}>
         <h3 id="user-username">${this.username}</h3>
-        <h5 id="total-points">${this.total}</h5>
         </div>
         <button class="delete-user" data-id=${this.id} onclick="deleteUser()">Delete User</button>
         `

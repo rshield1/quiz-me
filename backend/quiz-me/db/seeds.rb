@@ -14,7 +14,7 @@ Answer.destroy_all
 end
 
 quiz1 = Quiz.create(name: "Js Quiz")
-    question1 = Question.create(content: "How do locate an element by it's in Javascript?", quiz_id: quiz1.id)
+    question1 = Question.create(content: "How do locate an element by it's ID in Javascript?", quiz_id: quiz1.id)
         answer1 = Answer.create(text: 'getElementByID', correct: true, question_id: question1.id)
         answer2 = Answer.create(text: 'querySelectorAll', correct: false, question_id: question1.id)
         answer3 = Answer.create(text: 'getElementByClassName', correct: false, question_id: question1.id)
