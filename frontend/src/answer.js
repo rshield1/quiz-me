@@ -7,7 +7,7 @@ class Answer {
 
 
 
-    addAnswer(){
+    addAnswer(answersList){
         answersList.push(this)
     }
 
