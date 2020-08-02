@@ -6,17 +6,17 @@
 
 # Installation
 
-    1. Clone this repo to you local drive by running `git clone https://github.com/rshield1/quiz-me.git, then cd into the backend/quiz-me folder.
+ Clone this repo to you local drive by running `git clone https://github.com/rshield1/quiz-me.git, then cd into the backend/quiz-me folder.
 
-    2. Open folder using you preferred text editor, run bundle install in your terminal to install the gem dependencies. Note: There may be cases where you will have to update the dependencies.
+ Open folder using you preferred text editor, run bundle install in your terminal to install the gem dependencies. Note: There may be cases where you will have to update the dependencies.
 
-    3. Locally run a server using the rails command "rails s" which will create a localhost:3000 port for you database. Open this port in your preferred internet browser
+ Locally run a server using the rails command "rails s" which will create a localhost:3000 port for you database. Open this port in your preferred internet browser
     
-    4. This will locally run the server where you use API data from you backend.
+ This will locally run the server where you use API data from you backend.
 
-    5. Cd into the front-end folder and open the index.html file using your browser
+ Cd into the front-end folder and open the index.html file using your browser
 
-    6. Enjoy the quiz app!!
+ Enjoy the quiz app!!
 
 ## Development
 
