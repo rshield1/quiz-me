@@ -99,7 +99,9 @@
         .then(res => res.json())
         .then(user => {
             let u = new User(user.id, user.username, user.total)
-            u.renderUser();
+            u.renderUser()
+            alert("You are now saved in the database")
+            startButton.classList.remove("hide")
         })
             document.getElementById("user-form").reset()
     }
@@ -112,6 +114,7 @@
             })
             event.target.previousElementSibling.remove()
             event.target.remove()
+            alert("You are now deleted from the database")
             hudUser.innerText = "Create A User"
         
         }
