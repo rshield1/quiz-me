@@ -119,3 +119,8 @@ body.wrong {
     text-align: center;
     font-size: x-small;
 }
+
+.instructions {
+    text-align: center;
+    justify-content: center;
+}

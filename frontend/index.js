@@ -7,6 +7,8 @@
         const BASE_URL = "http://localhost:3000/"
         const BONUS = 10;
         const MAX_QUESTIONS = 3;
+        const instructionsTitle = document.getElementById("title")
+        const instructionsBody = document.getElementById("instructions")
         const startButton = document.getElementById("start-btn")
         const nextButton = document.getElementById("next-btn")
         const questionsElement = document.getElementById("question-container")
@@ -123,6 +125,8 @@
     //Start Game Function
         function startGame(){
             startButton.classList.add('hide')
+            instructionsBody.classList.add('hide')
+            instructionsTitle.classList.add("hide")
             questionsAnswers(questionsList, answersList)  
             shuffleQuestions = questionsList.sort(() => Math.random() - .5)
             currentQuestionIndex = 0
