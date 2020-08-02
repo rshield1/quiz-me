@@ -21,11 +21,8 @@
         let usersDiv = document.getElementById("users-info")
         let usersForm = document.getElementById("users-form")
         let quizContainer = document.getElementById("quiz-container")
-    
         let shuffleQuestions , currentQuestionIndex
         let questionCounter = document.getElementById("question-counter")
-        // let newScore = 0
-        // let score = document.getElementById("hud-score")
     //Fetching Functions for ALL USERS, QUESTIONS, and ANSWERS!
         function grabUsers() {
                 fetch(`${BASE_URL}/users`)
@@ -40,10 +37,10 @@
         function grabQuestions() {
             fetch(`${BASE_URL}/questions`)
             .then(res => res.json())
-            .then(data =>{
-                for (let question of data){
-                    let d = new Question(question.content)
-                    d.addQuestion(questionsList);
+            .then(questions =>{
+                for (let question of questions){
+                    let q = new Question(question.content)
+                    q.addQuestion(questionsList);
                 }
             })
                 
@@ -100,6 +97,7 @@
         .then(user => {
             let u = new User(user.id, user.username, user.total)
             u.renderUser()
+            hudUser.innerText = u.username
             alert("You are now saved in the database")
             startButton.classList.remove("hide")
         })
@@ -181,7 +179,6 @@
             nextButton.classList.remove('hide')  
             } else {
                 startButton.innerText = 'Restart'
-                //will implement score save into database
                 startButton.classList.remove('hide')
             }
             

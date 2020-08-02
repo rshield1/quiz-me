@@ -15,7 +15,7 @@ class User {
         </div>
         <button class="delete-user" data-id=${this.id} onclick="deleteUser()">Delete User</button>
         `
-        hudUser.innerHTML = this.username
+        hudUser.innerHTML = `Last User: ${this.username}`
     }
 }
 
