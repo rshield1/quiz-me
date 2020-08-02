@@ -6,7 +6,7 @@
 
 # Installation
 
- Clone this repo to you local drive by running `git clone https://github.com/rshield1/quiz-me.git, then cd into the backend/quiz-me folder.
+ Clone this repo to you local drive by running `git clone http://github.com/rshield1/quiz-me.git, then cd into the backend/quiz-me folder.
 
  Open folder using you preferred text editor, run bundle install in your terminal to install the gem dependencies. Note: There may be cases where you will have to update the dependencies.
 
@@ -24,12 +24,12 @@ After checking out the repo, run `bundle install` to install dependencies. For a
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[rshield1]quiz-me. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct].
+Bug reports and pull requests are welcome on GitHub at http://github.com/[rshield1]quiz-me. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct].
 
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ## Code of Conduct
 
