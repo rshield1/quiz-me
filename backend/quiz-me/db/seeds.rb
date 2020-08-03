@@ -32,39 +32,17 @@ quiz1 = Quiz.create(name: "Js Quiz")
         answer11 = Answer.create(text: "msg('Hello World');", correct: false, question_id: question3.id)
         answer12 = Answer.create(text: "console.log('Hello World');", correct: true, question_id: question3.id)
 
-
-# Question.create(content: "How do locate an element by it's in Javascript?",
-#         answers: [
-#             { text: 'getElementByID', correct: true },
-#             { text: 'querySelectorAll', correct: false },
-#             { text: 'getElementByClassName', correct: false },
-#             { text: 'cant find it by the id', correct: false }
-
-#         ]
-#     },
-#     {
-#         question: "How do you add js to your html page?",
-#         answers: [
-#             {text: "<script href='xxx.js'>", correct: false},
-#             {text: "<script name='xxx.js'>", correct: false},
-#             {text: "<script src='xxx.js'>", correct: true},
-#             {text: "<script file='xxx.js'>", correct: false}
-#         ]
-        
+    question4 = Question.create(content: "How to write an IF statement in JavaScript?", quiz_id: quiz1.id)
+        answer13 = Answer.create(text: "if i = 5", correct: false, question_id: question4.id)
+        answer14 = Answer.create(text: "if i == 5 then", correct: false, question_id: question4.id)
+        answer15 = Answer.create(text: "if i = 5 then", correct: false, question_id: question4.id)
+        answer16 = Answer.create(text: "if (i == 5)", correct: true, question_id: question4.id)
     
-#     },
-#     {
-#         question: "How do you write 'Hello World' in your console?",
-#         answers: [
-#             {text: "msgBox('Hello World');", correct: false},
-#             {text: "console.logBox('Hello World');", correct: false},
-#             {text: "msg('Hello World');", correct: false},
-#             {text: "console.log('Hello World');", correct: true}
-#         ]
-        
+    question5 = Question.create(content: "How does a FOR loop start", quiz_id: quiz1.id)
+        answer17 = Answer.create(text: "for (let i = 0; i<= 5)", correct: false, question_id: question5.id)
+        answer18 = Answer.create(text: "for i = 1 to 5", correct: false, question_id: question5.id)
+        answer19 = Answer.create(text: "for (let i = 0; i <= 5; i++)", correct: true, question_id: question5.id)
+        answer20 = Answer.create(text: "for (i <= 5; i++)", correct: false, question_id: question5.id)
     
-#     }
-# ]
-#     )
 
 

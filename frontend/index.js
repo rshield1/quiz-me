@@ -6,7 +6,7 @@
     //Set all variables
         const BASE_URL = "http://localhost:3000/"
         const BONUS = 10;
-        const MAX_QUESTIONS = 3;
+        const MAX_QUESTIONS = 5;
         const instructionsTitle = document.getElementById("title")
         const instructionsBody = document.getElementById("instructions")
         const startButton = document.getElementById("start-btn")
@@ -213,6 +213,7 @@
             questionsList[0]["answers"] = answersList.slice(0,4)
             questionsList[1]["answers"] = answersList.slice(4,8)
             questionsList[2]["answers"] = answersList.slice(8,12)
-            console.log("questionsList", ...questionsList)
+            questionsList[3]["answers"] = answersList.slice(12,16)
+            questionsList[4]["answers"] = answersList.slice(16,20)
         }
 
