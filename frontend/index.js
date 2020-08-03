@@ -181,12 +181,12 @@
                 startButton.innerText = 'Restart'
                 startButton.classList.remove('hide')
             }
-            
         }
 
     //Setting status Green or red depending on correct/incorrect    
         function setStatusClass(element, correct){
             clearStatusClass(element)
+            debugger
             if (correct) {
                 element.classList.add('correct')
             } else {
