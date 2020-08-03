@@ -10,11 +10,11 @@
 
  Open folder using you preferred text editor, run bundle install in your terminal to install the gem dependencies. Note: There may be cases where you will have to update the dependencies.
 
- Locally run a server using the rails command "rails s" which will create a localhost:3000 port for you database. Open this port in your preferred internet browser
+ Locally run a server using the rails command "rails s" which will create a localhost:3000 port for your backend database. Open this port in your google chrome
     
- This will locally run the server where you use API data from you backend.
+ This will locally run the server where you will use API data from your backend.
 
- Cd into the front-end folder and open the index.html file using your browser
+ Cd into the front-end folder named "front-end" and open the index.html file using your browser
 
  Enjoy the quiz app!!
 
