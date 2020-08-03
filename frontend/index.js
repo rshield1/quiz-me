@@ -129,14 +129,14 @@
             instructionsBody.classList.add('hide')
             instructionsTitle.classList.add("hide")
             questionsAnswers(questionsList, answersList)  
-            shuffleQuestions = questionsList.sort(() => Math.random() - .5)
+            // shuffleQuestions = questionsList.sort(() => Math.random() - .5)
             currentQuestionIndex = 0
             questionsElement.classList.remove("hide")
             nextQuestion()
         }
     //Next Question
         function nextQuestion() {
-            showQuestion(shuffleQuestions[currentQuestionIndex])
+            showQuestion(questionsList[currentQuestionIndex])
             questionCounter.innerText = `Question ${[currentQuestionIndex + 1]}/${MAX_QUESTIONS}`
         }
 
@@ -148,7 +148,6 @@
                 const button = document.createElement('button')
                 button.innerText = answer.text
                 button.classList.add('btn')
-
                 if (answer.correct) {
                     button.dataset.correct = answer.correct
                 }
@@ -175,7 +174,7 @@
             Array.from(answerButtons.children).forEach(button =>{
                 setStatusClass(button, button.dataset.correct)
             })
-            if (shuffleQuestions.length > currentQuestionIndex + 1) {
+            if (questionsList.length > currentQuestionIndex + 1) {
             nextButton.classList.remove('hide')  
             } else {
                 startButton.innerText = 'Restart'
@@ -186,7 +185,6 @@
     //Setting status Green or red depending on correct/incorrect    
         function setStatusClass(element, correct){
             clearStatusClass(element)
-            debugger
             if (correct) {
                 element.classList.add('correct')
             } else {
