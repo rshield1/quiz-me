@@ -21,7 +21,6 @@
         let usersDiv = document.getElementById("users-info")
         let usersForm = document.getElementById("users-form")
         let quizContainer = document.getElementById("quiz-container")
-        let shuffleQuestions , currentQuestionIndex
         let questionCounter = document.getElementById("question-counter")
     //Fetching Functions for ALL USERS, QUESTIONS, and ANSWERS!
         function grabUsers() {
