@@ -200,7 +200,6 @@
             body: JSON.stringify(user)
         })
                 lastUserScore = document.getElementById("users-info").lastChild.previousElementSibling
-                debugger
                 lastUserScore.previousElementSibling.lastElementChild.innerText = user.total
                 startButton.innerText = 'Restart'
                 startButton.classList.remove('hide')
