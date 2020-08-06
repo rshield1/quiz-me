@@ -14,9 +14,13 @@
         const questionsElement = document.getElementById("question-container")
         const questionElement = document.getElementById("question")
         const answerButtons = document.getElementById("answer-buttons")
+        let score = document.getElementById("current-user-total")
+        let newScore = 0
+        let currentUserID = undefined
         let questionsList = []
         let answersList = []
         let currentUser = undefined
+        let lastUserScore = undefined
         let hudUser = document.getElementById("hud-user")
         let usersDiv = document.getElementById("users-info")
         let usersForm = document.getElementById("users-form")
@@ -96,6 +100,7 @@
         .then(user => {
             let u = new User(user.id, user.username, user.total)
             u.renderUser()
+            currentUserID = u.id
             hudUser.innerText = u.username
             alert("You are now saved in the database")
             startButton.classList.remove("hide")
@@ -128,7 +133,7 @@
             instructionsBody.classList.add('hide')
             instructionsTitle.classList.add("hide")
             questionsAnswers(questionsList, answersList)  
-            // shuffleQuestions = questionsList.sort(() => Math.random() - .5)
+
             currentQuestionIndex = 0
             questionsElement.classList.remove("hide")
             nextQuestion()
@@ -169,13 +174,34 @@
         function selectAnswer(e) {
             const selectedButton = e.target
             const correct = selectedButton.dataset.correct
-            setStatusClass(document.body, correct)
-            Array.from(answerButtons.children).forEach(button =>{
-                setStatusClass(button, button.dataset.correct)
+            if (correct ==="true") {
+                incrementScore(BONUS)
+            }
+                setStatusClass(document.body, correct)
+                Array.from(answerButtons.children).forEach(button =>{
+                    setStatusClass(button, button.dataset.correct)
             })
             if (questionsList.length > currentQuestionIndex + 1) {
             nextButton.classList.remove('hide')  
-            } else {
+            } 
+            //Making Patch Request to database for User Update, then update user score on DOM.
+            else {
+                user = {
+                    id: currentUserID,
+                    username: hudUser.innerText,
+                    total: parseInt(score.innerText)
+                }
+               fetch(`${BASE_URL}/users/${currentUserID}`, {
+                method: 'PATCH',
+                headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+                },
+            body: JSON.stringify(user)
+        })
+                lastUserScore = document.getElementById("users-info").lastChild.previousElementSibling
+                debugger
+                lastUserScore.previousElementSibling.lastElementChild.innerText = user.total
                 startButton.innerText = 'Restart'
                 startButton.classList.remove('hide')
             }
@@ -198,11 +224,11 @@
             element.classList.remove('wrong')
         }
 
-    //Used to increment score.  Will fix later
-        // incrementScore = (num) =>{
-        //     newScore += num
-        //     score.innerText = newScore
-        // }
+    // Used to increment score.  Will fix later
+        incrementScore = (num) =>{
+            newScore += num
+            score.innerText = newScore
+        }
 
     //Collect all questions & Answers in an Array
         function questionsAnswers(questionsList, answersList) {
