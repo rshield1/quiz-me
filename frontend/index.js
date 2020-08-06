@@ -199,10 +199,10 @@
         }
 
     //Used to increment score.  Will fix later
-        incrementScore = (num) =>{
-            newScore += num
-            score.innerText = newScore
-        }
+        // incrementScore = (num) =>{
+        //     newScore += num
+        //     score.innerText = newScore
+        // }
 
     //Collect all questions & Answers in an Array
         function questionsAnswers(questionsList, answersList) {

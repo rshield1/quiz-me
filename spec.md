@@ -74,17 +74,17 @@ Live code. This could be refactoring, adding a new feature, or both.
 Answer questions about your knowledge of JavaScript Fundamentals.
 In particular, the JavaScript Fundamentals concepts your reviewer may ask about include:
 
-variables
-data structures
-functions
-hoisting
-scope
-context
-this
-closures
-ES6 syntax
-let, const
-arrow functions
+x variables
+x data structures
+x functions
+x hoisting
+x scope
+x execution context
+x this
+x closures
+x ES6 syntax
+x let, const
+x arrow functions
 Learning Goals
 These are the skills and knowledge that you should aim to demonstrate through the project review.
 
